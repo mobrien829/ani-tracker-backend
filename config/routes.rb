@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       resources :users, only: [:index, :create, :update, :destroy]
-      resources :articles, only: [:index, :update, :create, :destroy]
-      resources :bookmarks, only: [:index, :update, :create, :destroy]
+      resources :media, only: [:index, :update, :create, :destroy]
+      resources :usermedia, only: [:index, :update, :create, :destroy]
     end
   end
 
