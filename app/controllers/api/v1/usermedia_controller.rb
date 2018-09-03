@@ -1,4 +1,4 @@
-class Api::V1::UsermediaController < ApplicationController
+class Api::V1::UserMediaController < ApplicationController
     skip_before_action :authenticate_request, only: [:login, :create]
     before_action :find_user_media, only: [:update]
 
