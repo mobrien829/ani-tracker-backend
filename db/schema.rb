@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 2018_08_30_201905) do
 
   create_table "media", force: :cascade do |t|
     t.string "name"
-    t.string "[]"
-    t.string "anilistId"
-    t.string "malId"
+    t.integer "anilistId"
+    t.integer "malId"
     t.string "description"
     t.string "imgString"
     t.datetime "created_at", null: false
@@ -37,12 +36,9 @@ ActiveRecord::Schema.define(version: 2018_08_30_201905) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "[]"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "user_media", "media"
-  add_foreign_key "user_media", "users"
 end
