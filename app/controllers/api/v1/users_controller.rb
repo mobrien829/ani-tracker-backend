@@ -1,5 +1,8 @@
 class Api::V1::UsersController < ApplicationController
 
+    skip_before_action :authenticate_request, only: [:login, :create]
+    before_action :find_user, only: [:update, :index]
+
     def index
         render json: @user
     end
@@ -26,5 +29,30 @@ class Api::V1::UsersController < ApplicationController
         @user.delete
     end
 
+    def login
+        authenticate(params[:username], params[:password])
+    end
 
+    def authenticate(username, password)
+        command = AuthenticateUser.call(username, password)
+        if command.success?
+            render json: {
+                access_token: command.result,
+                message: 'Login Successful'
+            }
+        else
+            render json: {error: command.errors}, status: :unauthorized
+        end
+    end
+
+    def user_params
+        params.permit(
+            :username,
+            :password
+        )
+    end
+
+    def find_user
+        @user = current_user
+    end
 end
