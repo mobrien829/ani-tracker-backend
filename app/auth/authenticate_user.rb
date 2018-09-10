@@ -1,4 +1,5 @@
 # app/auth/authenticate_user.rb
+require_relative '../../lib/json_web_token.rb'
 
 class AuthenticateUser
     prepend SimpleCommand
