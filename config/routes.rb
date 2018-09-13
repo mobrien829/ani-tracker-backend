@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       post 'login', to: 'users#login'
 
       resources :users, only: [:index, :create, :update, :destroy]
-      resources :media, only: [:index, :update, :create, :destroy]
-      resources :usermedia, only: [:index, :update, :create, :destroy]
+      resources :shows, only: [:index, :update, :create, :destroy]
+      resources :user_shows, only: [:index, :update, :create, :destroy]
     end
   end
 
