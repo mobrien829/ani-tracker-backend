@@ -30,7 +30,7 @@ class Api::V1::MediaController < ApplicationController
     end
 
     def medium_params
-        params.permit(:title, :anilistId, :malId, :description, :imgString)
+        params.permit(:id, :malId, :title, :description, :coverImgString, :genres, :bannerImgString)
     end
 
     def find_medium

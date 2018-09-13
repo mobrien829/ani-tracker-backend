@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 2018_08_30_201905) do
   enable_extension "plpgsql"
 
   create_table "media", force: :cascade do |t|
-    t.string "name"
-    t.integer "anilistId"
+    t.string "title"
     t.integer "malId"
     t.string "description"
-    t.string "imgString"
+    t.string "coverImgString"
+    t.string "bannerImgString"
+    t.string "genres"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
