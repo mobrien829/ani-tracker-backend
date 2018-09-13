@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def login
-        authenticate(params[:username], params[:password])
+        authenticate(params[:username], params[:password]) 
     end
 
     def authenticate(username, password)

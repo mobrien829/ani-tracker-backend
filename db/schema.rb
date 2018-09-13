@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_201905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "media", force: :cascade do |t|
+  create_table "shows", force: :cascade do |t|
     t.string "title"
     t.integer "malId"
     t.string "description"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 2018_08_30_201905) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_media", force: :cascade do |t|
+  create_table "user_shows", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "medium_id"
+    t.bigint "show_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["medium_id"], name: "index_user_media_on_medium_id"
-    t.index ["user_id"], name: "index_user_media_on_user_id"
+    t.index ["show_id"], name: "index_user_shows_on_show_id"
+    t.index ["user_id"], name: "index_user_shows_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

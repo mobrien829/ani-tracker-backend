@@ -1,6 +1,6 @@
-class CreateMedia < ActiveRecord::Migration[5.2]
+class CreateShows < ActiveRecord::Migration[5.2]
   def change
-    create_table :media do |t|
+    create_table :shows do |t|
       t.string :title
       t.integer :malId
       t.string :description
