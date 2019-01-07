@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
     before_action :find_user, only: [:update, :index]
 
     def index
-        byebug
+        # byebug
         render json: @user
     end
 
@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            byebug
+            # byebug
             render json: @user, status: :accepted
         else
             render json: { errors: @user.errors.full_messages },  status: :unprocessible_entity
