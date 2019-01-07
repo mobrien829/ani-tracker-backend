@@ -1,5 +1,5 @@
 class Api::V1::ShowsController < ApplicationController
-    skip_before_action :authenticate_request, only: [:login, :create]
+    skip_before_action :authenticate_request, only: [:create]
     before_action :find_show, only: [:update]
 
     def index
@@ -18,6 +18,7 @@ class Api::V1::ShowsController < ApplicationController
 
     def create
         @show = Show.find_or_create_by(show_params)
+        byebug
         if @show.save
             render json: @show, status: :accepted
         else
@@ -30,7 +31,7 @@ class Api::V1::ShowsController < ApplicationController
     end
 
     def show_params
-        params.permit(:id, :malId, :title, :description, :coverImgString, :genres, :bannerImgString)
+        params.require(:show).permit(:id, :malId, :title, :description, :coverImgString, :genres, :bannerImgString)
     end
 
     def find_show
