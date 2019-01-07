@@ -18,7 +18,6 @@ class Api::V1::ShowsController < ApplicationController
 
     def create
         @show = Show.find_or_create_by(show_params)
-        byebug
         if @show.save
             render json: @show, status: :accepted
         else
