@@ -3,9 +3,12 @@ class Api::V1::UsersController < ApplicationController
     skip_before_action :authenticate_request, only: [:login, :create]
     before_action :find_user, only: [:update, :index]
 
+    # note: to auth lock index to just current user, uncomment line 10 and comment line 11
+
     def index
         # byebug
-        render json: @user
+        # render json: @user
+        render json: User.all
     end
 
     def update
