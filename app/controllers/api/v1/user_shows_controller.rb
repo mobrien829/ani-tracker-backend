@@ -3,7 +3,7 @@ class Api::V1::UserShowsController < ApplicationController
     before_action :find_user_shows, only: [:update]
 
     def index
-        @user_shows = UserShows.all
+        @user_shows = UserShow.all
         render json: @user_shows
     end
 
@@ -17,7 +17,7 @@ class Api::V1::UserShowsController < ApplicationController
     end
 
     def create
-        @user_show.find_or_create_by(user_media_params)
+        @user_show = UserShow.find_or_create_by(user_show_params)
         if @user_show.save
             render json: @user_show, status: :accepted
         else
@@ -32,7 +32,7 @@ class Api::V1::UserShowsController < ApplicationController
     private
 
     def user_show_params
-        params.permit(:user_id, :medium_id)
+        params.permit(:user_id, :show_id)
     end
 
     def find_user_shows

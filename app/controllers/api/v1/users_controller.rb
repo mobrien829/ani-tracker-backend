@@ -7,8 +7,8 @@ class Api::V1::UsersController < ApplicationController
 
     def index
         # byebug
-        # render json: @user
-        render json: User.all
+        render json: @user
+        # render json: User.all
     end
 
     def update

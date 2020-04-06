@@ -13,17 +13,19 @@
 ActiveRecord::Schema.define(version: 2018_08_30_201905) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "shows", force: :cascade do |t|
-    t.string "title"
+    t.hstore "title", default: {}
     t.integer "malId"
     t.string "description"
-    t.string "coverImgString"
+    t.hstore "coverImgString", default: {}
     t.string "bannerImgString"
-    t.string "genres"
+    t.string "genres", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genres"], name: "index_shows_on_genres", using: :gin
   end
 
   create_table "user_shows", force: :cascade do |t|
@@ -43,4 +45,6 @@ ActiveRecord::Schema.define(version: 2018_08_30_201905) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_shows", "shows"
+  add_foreign_key "user_shows", "users"
 end
